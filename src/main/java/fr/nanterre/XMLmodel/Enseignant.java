@@ -68,6 +68,7 @@ public class Enseignant {
                 "numEns=" + numEns +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
+                ", telephone='" + telephone + '\'' +
                 ", adresseMail='" + adresseMail + '\'' +
                 ", enseignements=" + enseignements +
                 '}';

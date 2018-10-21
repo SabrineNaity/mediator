@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
+import fr.nanterre.XMLmodel.Enseignement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -43,7 +45,10 @@ public class XMLExtractor {
         NodeList nodeList = node.getChildNodes();
         if (nodeList.getLength() > 1) {
             System.out.println("==================" + node.getNodeName() + "[" + nodeList.getLength() + "]======================");
-            extractEnseignants(node);
+            if(node.getNodeName().equals("Enseignants")){ extractEnseignants(node);}
+
+
+
         }
 
        // } else
@@ -58,7 +63,6 @@ public class XMLExtractor {
     }
 
 
-
     public List<Enseignant> extractEnseignants(Node node) {
         NodeList eList = node.getChildNodes();
         List<Enseignant> ensList=new ArrayList<Enseignant>();
@@ -70,18 +74,34 @@ public class XMLExtractor {
     }
 
 
+    public List<Enseignement> extractEnseignements(Node node) {
+        List<Enseignement> enseignements = new ArrayList<Enseignement>();
+        NodeList eList = node.getChildNodes();
+        for (int i = 0; i < eList.getLength(); i++) {
+            Enseignement enseignement = new Enseignement();
+            enseignement.setAnnee(Integer.parseInt(node.getChildNodes().item(0).getTextContent()));
+            System.out.println(enseignement);
+        }
+        return enseignements;
+    }
+
+
         public Enseignant extractEnseignant(Node node){
         Enseignant enseignant= new Enseignant();
-       // System.out.println(node.getChildNodes().item(0).getTextContent());
         enseignant.setNumEns(Integer.parseInt(node.getChildNodes().item(0).getTextContent()));
         enseignant.setNom(node.getChildNodes().item(1).getTextContent());
         enseignant.setPrenom(node.getChildNodes().item(2).getTextContent());
         enseignant.setTelephone(node.getChildNodes().item(3).getTextContent());
+        enseignant.setAdresseMail(node.getChildNodes().item(4).getTextContent());
+        List<Enseignement> enseignements= new ArrayList<Enseignement>();
+        for (int i = 0; i < node.getChildNodes().getLength(); i++) {
+            if (node.getChildNodes().item(i).getNodeName().equals("Enseignements")) {
+                Enseignement ens = new Enseignement();
+                Node current = node.getChildNodes().item(i);
+                enseignant.setEnseignements(extractEnseignements(current));
+            }
+        }
         System.out.println(enseignant);
-
-       // enseignant.setNumEns(node.getChildNodes().item(0));
-      //  e.setNumEns(Integer.parseInt(eList.item(0).getTextContent()));
-      //  System.out.println(Integer.parseInt(eList.item(0).getTextContent()));
         return null;
     }
 
