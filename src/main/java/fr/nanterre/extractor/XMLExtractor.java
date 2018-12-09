@@ -14,10 +14,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * @author Sabrine Nait Ijja
+ */
 public class XMLExtractor {
 
     private static final String XML_BD = "src/main/resources/Univ_BD_3.xml";
 
+    /**
+     *
+     * @return
+     */
     public Document init() {
         Document document = null;
         DocumentBuilderFactory factory = null;
