@@ -8,7 +8,8 @@ J'ai commencé l'implémentation avec une approche TDD, d'où le dossier Test,
  Package main-->java:
    --> Connector : pas encore implémentée ( peut être pas besoin) l'idée était d'implémenter les méthodes de connexion aux souces
    -->extractor: XML Extractor en cours d'implémentation
-   Il faut implémenter ORACLE Extracor et Excel Extractor
+   Il faut implémenter ORACLE Extracor et Excel Extractor.
+   Pour l'instant Oracle extractor contient seulement une méthode de connexion à la BD, une méthode pour interroger tous les tuples d'une table, trouver By ID,convertir sql en modèle java et un modèle java en sql
    En gros:L'extractor doit recevoir la requête du mediator, l'extraire de la source et la retourner au mediator.
    Plus en détail : il doit prendre la requête, l'adapter au MODEL de la source, l'executer, puis readapter la reponse au MODEL du mediator
    -->model: Le modèle de données du médiateur: nos classes etudiant , enseignant ....
