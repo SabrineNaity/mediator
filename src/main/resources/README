@@ -1,0 +1,22 @@
+J'ai commencé l'implémentation avec une approche TDD, d'où le dossier Test,
+ --> Le fichier MediatorTest détaille bien les test qu'on devra passer à la fin, il vous aidera surement à y voir plus clair
+ --> Pour l'instant, le fichier XMLExtractor teste le parsage seulement des Enseignants dans le fichier XML.
+
+ Structure du code :
+ Package main-->Resources:
+      - contient les sources de données qu'on doit interroger
+ Package main-->java:
+   --> Connector : pas encore implémentée ( peut être pas besoin) l'idée était d'implémenter les méthodes de connexion aux souces
+   -->extractor: XML Extractor en cours d'implémentation
+   Il faut implémenter ORACLE Extracor et Excel Extractor.
+   Pour l'instant Oracle extractor contient seulement une méthode de connexion à la BD, une méthode pour interroger tous les tuples d'une table, trouver By ID,convertir sql en modèle java et un modèle java en sql
+   En gros:L'extractor doit recevoir la requête du mediator, l'extraire de la source et la retourner au mediator.
+   Plus en détail : il doit prendre la requête, l'adapter au MODEL de la source, l'executer, puis readapter la reponse au MODEL du mediator
+   -->model: Le modèle de données du médiateur: nos classes etudiant , enseignant ....
+   --> XML model : le modèle de données selon la structure du XML
+   Il faut implémenter ORACLE model et Excel model
+   --> Mediator : doit lancer les 3 requêtes demandées par la prof et pour lequel on fait tout ce film !!
+   bisous
+
+
+
